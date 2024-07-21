@@ -1,0 +1,226 @@
+<diagram program="umletino" version="15.1"><zoom_level>4</zoom_level><help_text>&lt;&lt;views&gt;&gt;
+/View/
+--
+-root: Parent
+--
++View()
+/#initializeView(): Parent/
++getRoot(): Parent
+</help_text><element><id>UMLClass</id><coordinates><x>1080</x><y>112</y><w>84</w><h>44</h></coordinates><panel_attributes>&lt;&lt;views&gt;&gt;
+/View/
+--
+-root: Parent
+--
++View()
+/#initializeView(): Parent/
++getRoot(): Parent</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1036</x><y>192</y><w>84</w><h>108</h></coordinates><panel_attributes>&lt;&lt;views&gt;&gt;
+ZooView
+--
+ - nameInput: TextArea          
+ - locationInput: TextField     
+ - streetInput: TextField       
+ - houseNumberInput: TextField  
+ - addButton: Button            
+ - newButton: Button            
+ - deleteButton: Button         
+ - switchButton: Button         
+ - loadMenuItem: MenuItem       
+ - saveMenuItem: MenuItem       
+ - exitMenuItem: MenuItem    
+ - descendingMenuItem: MenuItem
+ - ascendingMenuItem: MenuItem   
+ - listView: ListView&lt;Zoo&gt;
+--
++ initializeView(): Parent</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>192</y><w>84</w><h>128</h></coordinates><panel_attributes>&lt;&lt;views&gt;&gt;
+AnimalView
+--
+ - typeInput: TextArea             
+ - lengthInput: TextField          
+ - weightInput: TextField          
+ - birthdayInput: DatePicker       
+ - comboBox: ComboBox&lt;Zoo&gt;         
+ - isCarnivorousInput: CheckBox    
+ - listView: ListView&lt;Animal&gt;      
+ - addButton: Button               
+ - newButton: Button               
+ - deleteButton: Button            
+ - switchButton: Button
+ - sortFromAToZ: RadioButton
+ - sortFromZToA: RadioButton
+ - sortByWeightASC: RadioButton
+ - sortByWeightDES: RadioButton
+ -  toggleGroup: ToggleGroup 
+--
++ initializeView(): Parent</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1076</x><y>152</y><w>36</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>1124</x><y>152</y><w>64</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>824</x><y>228</y><w>84</w><h>32</h></coordinates><panel_attributes>&lt;&lt;controllers&gt;&gt;
+/Controller/
+--
+/+getView(): View/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>708</x><y>352</y><w>112</w><h>132</h></coordinates><panel_attributes>&lt;&lt;views&gt;&gt;
+ZooController
+--
+ - view: ZooView                           
+   - zoo: Zoo                                
+  - errors: ArrayList&lt;String&gt;               
+  - zooDAO: ZooDAO                          
+   - animalDAO: AnimalDAO                    
+   - zooObservableList: ObservableList&lt;Zoo&gt;  
+   - selectedZoo: Zoo                        
+--
+ + ZooController(SELECTED_ZOO: Zoo)         
+   + handleLoadButton()                      
+   + handleExitButton()                      
+   + handleSaveButton()                      
+   + setItem(zoo: Zoo)                       
+   + handleAddButton()                      
+   + handleNewButton()                       
+   + handleDeleteButton()                    
+   + handleSwitchButton()
+   + handleSortZToA()
+   + handleSortAToZ()	    </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>336</y><w>96</w><h>124</h></coordinates><panel_attributes>&lt;&lt;views&gt;&gt;
+AnimalController
+--
+ - view: AnimalView                  
+ - errors: ArrayList&lt;String&gt;         
+ - selectedZoo: Zoo                  
+ - animal: Animal                    
+ - animalDAO: AnimalDAO              
+ - zooDAO: ZooDAO                    
+ - observableListZoos: ObservableList&lt;Zoo&gt;  
+ - observableListAnimals: ObservableList&lt;Animal&gt;  
+ - replacer: String  
+--
++ AnimalController(SELECTED_ZOO: Zoo)
+   + setItem(zoo: Zoo)                       
+   + handleAddButton()                      
+   + handleNewButton()                       
+   + handleDeleteButton()                    
+   + handleSwitchButton() 
+   + handleSortByNameDES()
+   + handleSortByNameASC()
+   + handleSortByWeightDES()
+   + handleSortByWeightASC()   </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>904</x><y>124</y><w>184</w><h>112</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>440;10;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>256</y><w>92</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;240</additional_attributes></element><element><id>Relation</id><coordinates><x>880</x><y>256</y><w>276</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;670;200</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1104</x><y>536</y><w>96</w><h>48</h></coordinates><panel_attributes>Animal
+--
+-Zoo: belongsTo
+-type: String 
+-birthDay: LocalDate
+-length: double 
+-weight: double
+-isCarnivorous: boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>712</x><y>536</y><w>96</w><h>40</h></coordinates><panel_attributes>Zoo
+--
+-name: String
+-location: String 
+-street: String
+-houseNumber: int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>804</x><y>544</y><w>308</w><h>20</h></coordinates><panel_attributes>&lt; belongs to
+m1=1
+m2=0..n
+</panel_attributes><additional_attributes>10;20;750;20</additional_attributes></element><element><id>Relation</id><coordinates><x>756</x><y>480</y><w>12</w><h>64</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1148</x><y>456</y><w>12</w><h>88</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>404</x><y>152</y><w>84</w><h>52</h></coordinates><panel_attributes>&lt;&lt;data&gt;&gt;
+DAO&lt;T&gt;
+--
++getAll(): List&lt;T&gt;
++addOrUpdate(object: T): void
++remove(object: T): void
++save(): boolean
++load(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>308</x><y>256</y><w>84</w><h>72</h></coordinates><panel_attributes>&lt;&lt;data&gt;&gt;
+/ZooDAO/
+--
+#zoos: List&lt;Zoo&gt; 
+--
+ +ZooDAO()                               
+ +getById(id: int): Zoo                  
+ +getIdFor(zoo: Zoo): int                 
+ +getAll(): List&lt;Zoo&gt;                     
+ +addOrUpdate(zoo: Zoo): void             
+ +remove(zoo: Zoo): void
++save(): boolean
++load(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>464</x><y>248</y><w>84</w><h>72</h></coordinates><panel_attributes>&lt;&lt;data&gt;&gt;
+/AnimalDAO/
+--
+#animals: List&lt;Animal&gt; 
+--
++AnimalDAO()  
+ +getAllFor(zoo: Zoo): List&lt;Animal&gt;       
+ +getAll(): List&lt;Animal&gt;                  
+ +addOrUpdate(animal: Animal): void       
+ +remove(animal: Animal): void            
+/+load(): boolean/
+/+save(): boolean/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>272</x><y>372</y><w>72</w><h>72</h></coordinates><panel_attributes>&lt;&lt;data&gt;&gt;
+DummyZooDAO
+--
++load(): boolean
++save(): boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>372</y><w>84</w><h>76</h></coordinates><panel_attributes>&lt;&lt;data&gt;&gt;
+DummyAnimalDAO
+--
++load(): boolean
++save(): boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>348</x><y>200</y><w>88</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>200;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>200</y><w>44</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;90;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>356</x><y>372</y><w>68</w><h>76</h></coordinates><panel_attributes>&lt;&lt;data&gt;&gt;
+TextZooDAO
+--
+_-FILE: String_
+--
++load(): boolean
++save(): boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>372</y><w>68</w><h>76</h></coordinates><panel_attributes>&lt;&lt;data&gt;&gt;
+TextAnimalDAO
+--
+_-FILE: String_
+--
++load(): boolean
++save(): boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>324</y><w>16</w><h>56</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>20;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>364</x><y>324</y><w>36</w><h>56</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;70;120</additional_attributes></element><element><id>Relation</id><coordinates><x>532</x><y>316</y><w>28</w><h>64</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;50;140</additional_attributes></element><element><id>Relation</id><coordinates><x>476</x><y>316</y><w>32</w><h>64</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>60;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>644</x><y>112</y><w>84</w><h>72</h></coordinates><panel_attributes>MainApplication
+--
+-stage: Stage          
+-scene: Scene          
+-zooDAO: ZooDAO        
+-animalDAO: AnimalDAO  
+-TITLE: String
+--
++start(stage: Stage)   
++switchController(controller: Controller): void 
++getZooDAO(): ZooDAO   
++getAnimalDAO(): AnimalDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>788</x><y>112</y><w>84</w><h>72</h></coordinates><panel_attributes>Main
+--
+-studentNaam: String               
+-studentNummer: String             
+-jaIkAccepteer: boolean            
++launchedFromMain: boolean
+--
++main(args: String[]): void        
++showTegridy(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>388</x><y>132</y><w>264</w><h>156</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;370;640;10</additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>180</y><w>140</w><h>96</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;220;330;10</additional_attributes></element><element><id>Relation</id><coordinates><x>724</x><y>124</y><w>72</w><h>12</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>712</x><y>180</y><w>120</w><h>60</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>280;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>904</x><y>304</y><w>84</w><h>28</h></coordinates><panel_attributes>&lt;&lt;java.util&gt;&gt;
+Comparator&lt;T&gt;
+--
++compare(o1: T, o2: T): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>828</x><y>352</y><w>76</w><h>48</h></coordinates><panel_attributes>&lt;&lt;comparators&gt;&gt;
+NameComparator&lt;Zoo&gt;
+--
+-ascending: boolean
+--
++NameComparator(ascending: boolean)
++compare(o1: Zoo, o2: Zoo): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>908</x><y>352</y><w>80</w><h>48</h></coordinates><panel_attributes>&lt;&lt;comparators&gt;&gt;
+WeightComparator&lt;Animal&gt;
+--
+-ascending: boolean
+--
++WeightComparator(ascending: boolean)
++compare(o1: Animal, o2: Animal): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>992</x><y>352</y><w>96</w><h>48</h></coordinates><panel_attributes>&lt;&lt;comparators&gt;&gt;
+TypeAndLengthComparator&lt;Animal&gt;
+--
+-ascending: boolean
+--
++WeightComparator(ascending: boolean)
++compare(o1: Animal, o2: Animal): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>864</x><y>328</y><w>76</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>170;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>944</x><y>328</y><w>12</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>984</x><y>328</y><w>52</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;110;60</additional_attributes></element><element><id>Relation</id><coordinates><x>804</x><y>396</y><w>96</w><h>148</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;350;220;10</additional_attributes></element><element><id>Relation</id><coordinates><x>928</x><y>396</y><w>184</w><h>148</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>440;350;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1016</x><y>396</y><w>128</w><h>148</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>300;350;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1064</x><y>396</y><w>44</w><h>24</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;90;40</additional_attributes></element><element><id>Relation</id><coordinates><x>816</x><y>396</y><w>52</w><h>24</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>110;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>972</x><y>396</y><w>136</w><h>52</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;320;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>616</x><y>372</y><w>68</w><h>76</h></coordinates><panel_attributes>&lt;&lt;data&gt;&gt;
+ObjectAnimalDAO
+--
+_-FILE: String_
+--
++load(): boolean
++save(): boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>288</y><w>80</w><h>92</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;180;210</additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>324</y><w>84</w><h>52</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>190;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>368</y><w>68</w><h>76</h></coordinates><panel_attributes>&lt;&lt;data&gt;&gt;
+BinaryZooDAO
+--
+_-FILE: String_
+--
++load(): boolean
++save(): boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>728</x><y>76</y><w>56</w><h>16</h></coordinates><panel_attributes>&lt;&lt;javafx.application&gt;&gt;
+Application</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>688</x><y>88</y><w>48</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;60</additional_attributes></element></diagram>
